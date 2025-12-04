@@ -1,0 +1,619 @@
+/* ======================================= */
+/* ====== MOBILE NAVIGATION MENU ======== */
+/* ======================================= */
+
+/* Mobile Menu Toggle Button - Hidden by default */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+/* Mobile Menu - Hidden by default */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    text-align: center;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+    max-height: 500px;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu li {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.mobile-menu .mobile-enquiry-btn {
+    background-color: var(--primary-color);
+    color: white;
+    margin: 10px 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.mobile-menu .mobile-enquiry-btn:hover {
+    background-color: #6e001e;
+}
+
+/* ======================================= */
+/* ====== RESPONSIVE MEDIA QUERIES ====== */
+/* ======================================= */
+
+/* Global Fixes for Mobile */
+@media (max-width: 768px) {
+
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .container,
+    .section-header,
+    .header-one {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Tablet and Mobile - 1024px and below */
+@media (max-width: 1024px) {
+
+    /* Header adjustments */
+    .header-one {
+        padding: 10px 20px;
+    }
+
+    .main-logo {
+        height: 50px;
+        margin-right: 0;
+    }
+
+    /* Hide desktop nav and show mobile toggle */
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .header-actions {
+        display: none;
+    }
+
+    /* Hero Section */
+    .hero-banner {
+        flex-direction: column;
+        padding: 20px 15px;
+        min-height: auto;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2em;
+        line-height: 1.3;
+    }
+
+    .hero-images {
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-box img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* Property Discovery Cards */
+    .cards-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .property-card {
+        max-width: 100%;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    /* Exclusive Highlight */
+    .exclusive-highlight-section {
+        padding: 0 15px;
+        margin: 40px auto;
+    }
+
+    .card-image-box img {
+        min-height: 200px;
+        height: 200px;
+    }
+
+    .highlight-card .card-text {
+        padding: 0;
+    }
+
+    .highlight-card h3 {
+        font-size: 1.5em;
+    }
+
+    .highlight-details {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .highlight-details>div {
+        width: 48%;
+        font-size: 0.8em;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .view-details-1 {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        background-color: var(--secondary-color);
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    /* Featured Sell Section */
+    .featured-sell-section {
+        padding: 0 15px;
+        margin: 40px auto;
+    }
+
+    .sell-card {
+        min-width: 280px;
+    }
+
+    /* Dream Home Section */
+    .dream-home-section {
+        flex-direction: column;
+        padding: 30px 15px;
+        gap: 15px;
+        padding-bottom: 10px;
+    }
+
+    .sell-card {
+        min-width: 85vw;
+        flex: 0 0 auto;
+    }
+
+    /* About Us Page Mobile Styles */
+    .why-choose-us-section .container {
+        flex-direction: column;
+        padding: 20px 15px;
+    }
+
+    .why-choose-us-image,
+    .why-choose-us-text {
+        width: 100%;
+    }
+
+    .why-choose-us-image img {
+        width: 100%;
+        height: 500px;
+    }
+
+    .reason-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .reason-item,
+    .reason-item-1 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .mission-vision-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .mission-block,
+    .vision-block {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .get-consultation-section .container {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+
+    .consultation-info,
+    .consultation-form-block {
+        width: 100%;
+        padding: 0;
+    }
+
+    .consultation-form-block {
+        margin-top: 30px;
+    }
+
+}
+
+@media (min-width: 480px){
+.mission-vision-container {
+    flex-direction: row;
+}
+}
+
+
+.highlight-details {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.highlight-details>div {
+    width: 48%;
+    font-size: 0.8em;
+}
+
+.card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.view-details-1 {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #e60032;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Featured Sell Section */
+.featured-sell-section {
+    padding: 0 15px;
+    margin: 10px 0px;
+}
+
+.sell-card {
+    min-width: 280px;
+}
+
+/* Dream Home Section */
+.dream-home-section {
+    flex-direction: column;
+    padding: 30px 15px;
+    gap: 30px;
+}
+
+.trust-score-box,
+.text-content,
+.image-hover-box {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.consultation-form textarea {
+    width: 100%;
+}
+
+/* FAQ Section */
+.faq-container {
+    padding: 20px 15px;
+}
+
+/* Footer Fixes */
+
+.why-choose-us-image img {
+    width: 100%;
+    height: 500px;
+}
+
+.reason-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.reason-item,
+.reason-item-1 {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.mission-vision-container {
+    flex-direction: row;
+    gap: 20px;
+}
+
+.mission-block,
+.vision-block {
+    width: 100%;
+    padding: 20px;
+}
+
+.features-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 15px;
+}
+
+.get-consultation-section .container {
+    flex-direction:row;
+    padding: 30px 15px;
+}
+
+.consultation-info,
+.consultation-form-block {
+    width: 100%;
+    padding: 10px;
+}
+
+.consultation-form-block {
+    margin-top: 30px;
+}
+
+
+.highlight-card .card-text {
+    padding: 0;
+}
+
+.highlight-card h3 {
+    font-size: 2.3em;
+    font-weight: 800;
+}
+
+.highlight-details {
+    flex-wrap: wrap;
+}
+
+.highlight-details>div {
+    width: 32%;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.view-details-1 {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #e60032;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Featured Sell Section */
+.featured-sell-section {
+    padding: 0 15px;
+    margin: 40px auto;
+}
+
+.sell-card {
+    min-width: 346px;
+}
+
+/* Dream Home Section */
+.dream-home-section {
+    flex-direction: row;
+    padding: 30px 15px;
+    gap: 30px;
+}
+
+.trust-score-box,
+.text-content,
+.image-hover-box {
+    width: 0%;
+    margin-bottom: 0;
+}
+
+.consultation-form textarea {
+    width: 97%;
+}
+
+/* FAQ Section */
+.faq-container {
+    padding: 50px 15px;
+}
+
+/* Footer Fixes */
+.footer-container {
+    flex-direction: row;
+    padding: 30px 20px;
+}
+
+.footer-col {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+}
+
+.newsletter-form input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.newsletter-form button {
+    width: 100%;
+}
+
+@media (max-width: 768px){
+    .contact-info{
+        min-width: auto;
+        height: auto;
+    }
+
+    .social-links{
+        padding-bottom: 20px;
+    }
+}
+
+
+
+/* Small Mobile - 480px and below */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.5em;
+    }
+
+    .highlight-card {
+        min-width: 90vw;
+        margin-left: 0;
+    }
+
+    .sell-card {
+        min-width: 85vw;
+    }
+
+    #property-search-form {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .sub-nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .sub-nav-item {
+        font-size: 13px;
+    }
+
+    .blog-section {
+        padding: 40px 15px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        margin-left: 35px;
+    }
+
+    .consultation-form input,
+    .consultation-form textarea {
+        width: 100%;
+    }
+
+    .mission-vision-container{
+        flex-direction: column;
+    }
+
+    .get-consultation-section .container{
+        flex-direction: column;
+    }
+
+    .why-choose-us-image img{
+        width: 100%;
+        height: auto;
+    }
+
+    .sell-card .price{
+        margin-right: 39px;
+    }
+
+    .view-details, .view-details-1{
+        font-size: 0.8em;
+    }
+}
+
+/* Extra Small Mobile - 375px and below */
+@media (max-width: 375px) {
+    .hero-text h1 {
+        font-size: 1.3em;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    .property-card {
+        padding: 25px 15px;
+    }
+
+    .sell-card {
+        min-width: 220px;
+    }
+
+    .scroll-btn {
+        padding: 5px 8px;
+        font-size: 1em;
+    }
+
+    .highlight-card {
+        min-width: 95%;
+    }
+}
