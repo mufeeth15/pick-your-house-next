@@ -1,7 +1,7 @@
 import "./globals.css";
 import "./mobile-responsive.css";
-import Providers from "@/components/Providers";
-import ClientLayout from "@/components/ClientLayout";
+import Providers from "../components/Providers";
+import ClientLayout from "../components/ClientLayout";
 
 export const metadata = {
   title: "Pick Your House",

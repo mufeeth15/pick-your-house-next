@@ -2391,8 +2391,8 @@ i.fas.fa-map-marker-alt {
 
 .form-row {
     display: flex;
-    gap: 30px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
 .form-group {
@@ -4212,7 +4212,6 @@ a.view-details-2 {
 .form-row {
     display: flex;
     gap: 30px;
-    margin-bottom: 25px;
 }
 
 .form-group {

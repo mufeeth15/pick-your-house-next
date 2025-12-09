@@ -20,35 +20,47 @@ const About = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
+        try {
+            const nameParts = formData.name.trim().split(' ');
+            const firstName = nameParts[0] || ' ';
+            const lastName = nameParts.slice(1).join(' ') || '';
 
-        // Split name into first and last name for the context
-        const nameParts = formData.name.trim().split(' ');
-        const firstName = nameParts[0];
-        const lastName = nameParts.slice(1).join(' ') || '';
+            const contactData = {
+                firstName,
+                lastName,
+                email: formData.email,
+                phone: formData.phone,
+                property: formData.property, // Using property input as service/subject
+                message: formData.message
+            };
 
-        const contactData = {
-            firstName,
-            lastName,
-            email: formData.email,
-            phone: formData.phone,
-            service: formData.property, // Using property input as service/subject
-            message: formData.message
-        };
+            const res = await fetch('/api/about', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(contactData),
+            });
 
-        addContact(contactData);
-        console.log('Form submitted:', formData);
-        alert('Message sent successfully! Our team will contact you soon.');
+            const result = await res.json();
+            if (!res.ok) {
+                throw new Error(result.error || 'Something went wrong');
+            }
 
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            property: '',
-            message: ''
-        });
+            alert('Message sent successfully!');
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                property: '',
+                message: ''
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Failed to send message. Please try again later.');
+        }
     };
 
     return (

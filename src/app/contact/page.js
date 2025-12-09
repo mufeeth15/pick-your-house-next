@@ -17,30 +17,41 @@ const Contact = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        // console.log("-------> CHANGED THE STATE OF THE form -------->")
+        // console.log(name, value);
         setFormData({
             ...formData,
             [name]: value
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Add contact to context (will appear in admin dashboard)
-        addContact(formData);
-
-        console.log('Contact form submitted:', formData);
-        alert('Message sent successfully! Our team will contact you soon.');
-
-        // Reset form
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            service: '1bhk',
-            message: ''
-        });
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            const result = await res.json();
+            if (!res.ok) {
+                throw new Error(result.error || 'Something went wrong');
+            }
+            alert('Message sent successfully!');
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                service: '1bhk',
+                message: ''
+            });
+        } catch (error) {
+            console.error('Error submitting contact form:', error);
+            alert('Failed to send message. Please try again.');
+        }
     };
 
     return (
