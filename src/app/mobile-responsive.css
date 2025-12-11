@@ -75,25 +75,6 @@
 /* ====== RESPONSIVE MEDIA QUERIES ====== */
 /* ======================================= */
 
-/* Global Fixes for Mobile */
-@media (max-width: 768px) {
-
-    body,
-    html {
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    .container,
-    .section-header,
-    .header-one {
-        padding-left: 15px;
-        padding-right: 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
 /* Tablet and Mobile - 1024px and below */
 @media (max-width: 1024px) {
 
@@ -233,6 +214,13 @@
         padding-bottom: 10px;
     }
 
+    .trust-score-box,
+    .text-content,
+    .image-hover-box {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
     .sell-card {
         min-width: 85vw;
         flex: 0 0 auto;
@@ -299,230 +287,49 @@
 
 }
 
-@media (min-width: 480px){
-.mission-vision-container {
-    flex-direction: row;
-}
-}
-
-
-.highlight-details {
-    flex-wrap: wrap;
-    gap: 10px;
+@media (min-width: 480px) {
+    .mission-vision-container {
+        flex-direction: row;
+    }
 }
 
-.highlight-details>div {
-    width: 48%;
-    font-size: 0.8em;
-}
+/* Global Fixes for Mobile */
+@media (max-width: 768px) {
 
-.card-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-}
+    body,
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
 
-.view-details-1 {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #e60032;
-    color: #fff;
-    border-radius: 5px;
-    text-decoration: none;
-}
+    .container,
+    .section-header,
+    .header-one {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/* Featured Sell Section */
-.featured-sell-section {
-    padding: 0 15px;
-    margin: 10px 0px;
-}
-
-.sell-card {
-    min-width: 280px;
-}
-
-/* Dream Home Section */
-.dream-home-section {
-    flex-direction: column;
-    padding: 30px 15px;
-    gap: 30px;
-}
-
-.trust-score-box,
-.text-content,
-.image-hover-box {
-    width: 100%;
-    margin-bottom: 0;
-}
-
-.consultation-form textarea {
-    width: 100%;
-}
-
-/* FAQ Section */
-.faq-container {
-    padding: 20px 15px;
-}
-
-/* Footer Fixes */
-
-.why-choose-us-image img {
-    width: 100%;
-    height: 500px;
-}
-
-.reason-list {
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.reason-item,
-.reason-item-1 {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.mission-vision-container {
-    flex-direction: row;
-    gap: 20px;
-}
-
-.mission-block,
-.vision-block {
-    width: 100%;
-    padding: 20px;
-}
-
-.features-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 15px;
-}
-
-.get-consultation-section .container {
-    flex-direction:row;
-    padding: 30px 15px;
-}
-
-.consultation-info,
-.consultation-form-block {
-    width: 100%;
-    padding: 10px;
-}
-
-.consultation-form-block {
-    margin-top: 30px;
-}
-
-
-.highlight-card .card-text {
-    padding: 0;
-}
-
-.highlight-card h3 {
-    font-size: 2.3em;
-    font-weight: 800;
-}
-
-.highlight-details {
-    flex-wrap: wrap;
-}
-
-.highlight-details>div {
-    width: 32%;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-
-.card-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.view-details-1 {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: #e60032;
-    color: #fff;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-/* Featured Sell Section */
-.featured-sell-section {
-    padding: 0 15px;
-    margin: 40px auto;
-}
-
-.sell-card {
-    min-width: 346px;
-}
-
-/* Dream Home Section */
-.dream-home-section {
-    flex-direction: row;
-    padding: 30px 15px;
-    gap: 30px;
-}
-
-.trust-score-box,
-.text-content,
-.image-hover-box {
-    width: 0%;
-    margin-bottom: 0;
-}
-
-.consultation-form textarea {
-    width: 97%;
-}
-
-/* FAQ Section */
-.faq-container {
-    padding: 50px 15px;
-}
-
-/* Footer Fixes */
-.footer-container {
-    flex-direction: row;
-    padding: 30px 20px;
-}
-
-.footer-col {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.newsletter-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-}
-
-.newsletter-form input {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.newsletter-form button {
-    width: 100%;
-}
-
-@media (max-width: 768px){
-    .contact-info{
+    .contact-info {
         min-width: auto;
         height: auto;
     }
 
-    .social-links{
+    .social-links {
         padding-bottom: 20px;
     }
+
+    /* Footer Stacking for Mobile to fix alignment */
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-col {
+        width: 100%;
+        margin-bottom: 30px;
+    }
 }
-
-
 
 /* Small Mobile - 480px and below */
 @media (max-width: 480px) {
@@ -568,24 +375,25 @@
         width: 100%;
     }
 
-    .mission-vision-container{
+    .mission-vision-container {
         flex-direction: column;
     }
 
-    .get-consultation-section .container{
+    .get-consultation-section .container {
         flex-direction: column;
     }
 
-    .why-choose-us-image img{
+    .why-choose-us-image img {
         width: 100%;
         height: auto;
     }
 
-    .sell-card .price{
+    .sell-card .price {
         margin-right: 39px;
     }
 
-    .view-details, .view-details-1{
+    .view-details,
+    .view-details-1 {
         font-size: 0.8em;
     }
 }

@@ -186,10 +186,37 @@
     color: #9ca3af;
 }
 
+/* Password Visibility Toggle */
+.password-input {
+    padding-right: 3.5rem;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    font-size: 1.25rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+
+.password-toggle-btn:hover {
+    color: #cc3843;
+}
+
 .error-message {
     background: #fee2e2;
     color: #991b1b;
-    padding: 1rem 1.25rem;
+    padding: 5px 10px;
     border-radius: 12px;
     margin-bottom: 1.5rem;
     display: flex;
@@ -406,5 +433,9 @@
 
     .remember-me {
         color: #d1d5db;
+    }
+
+    .password-toggle-btn {
+        color: #cdcdcd;
     }
 }

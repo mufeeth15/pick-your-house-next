@@ -7,17 +7,22 @@ import '@/styles/admin-login.css';
 const AdminLogin = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     // Check if already authenticated
     useEffect(() => {
-        const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-        if (isAuthenticated) {
-            router.replace('/admin');
-        }
-    }, [router]);
+        // const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+        // if (isAuthenticated) {
+        //     router.replace('/admin');
+        // }
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,11 +30,14 @@ const AdminLogin = () => {
         setIsLoading(true);
 
         try {
-            const res = await fetch('/api/admin/login', {
+            const res = await fetch('/api/admin/login', {   
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
+
+            // console.log(hashedPassword);
+            // console.log(res);
 
             const data = await res.json();
 
@@ -101,14 +109,22 @@ const AdminLogin = () => {
                                 <i className="las la-lock"></i>
                             </span>
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 id="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Enter your password"
                                 required
-                                className="form-input"
+                                className="form-input password-input"
                             />
+                            <button
+                                type="button"
+                                className="password-toggle-btn"
+                                onClick={togglePasswordVisibility}
+                                aria-label={showPassword ? "Hide password" : "Show password"}
+                            >
+                                <i className={`las ${showPassword ? 'la-eye-slash' : 'la-eye'}`}></i>
+                            </button>
                         </div>
                     </div>
 

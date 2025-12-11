@@ -1,44 +1,52 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { supabaseServer } from "@/utils/supabase/server";
+import bcrypt from "bcrypt";
 
 export async function POST(req) {
+
   try {
     const { username, password } = await req.json();
 
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    );
+    console.log("API RECEIVED:")
+    console.log("received username:", username);
+    // const hashedPassword = crypto.createHash("sha256").update(password).digest("hex");
+    // This treats "sha256" as the name of the algorithm
+    // const hashedPassword = bcrypt.hashSync(password, 12);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: username,
-      password,
-    });
+    const { data: user, error } = await supabaseServer
+      .from("admin_login")
+      .select("password")
+      .eq("username", username)
+      .single();
 
-    if (error) {
+    console.log("Supabase return user:", user);
+    console.log("Supabase error:", error);
+
+    if (error || !user) {
       return NextResponse.json(
         { success: false, message: "Invalid username or password" },
         { status: 401 }
       );
     }
 
-    const response = NextResponse.json({
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      console.log("Password wrong for:", username);
+      return NextResponse.json(
+        { success: false, message: "Invalid username or password" },
+        { status: 401 }
+      );
+    }
+
+    console.log("LOGIN SUCCESS:", username);
+    return NextResponse.json({
       success: true,
       message: "Login successful",
     });
 
-    response.cookies.set("sb-access-token", data.session.access_token, {
-      httpOnly: true,
-      path: "/",
-    });
-
-    response.cookies.set("sb-refresh-token", data.session.refresh_token, {
-      httpOnly: true,
-      path: "/",
-    });
-
-    return response;
   } catch (err) {
+    console.error("API route error:", err);
     return NextResponse.json(
       { success: false, message: "Server error" },
       { status: 500 }
