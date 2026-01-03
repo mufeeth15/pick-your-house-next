@@ -32,7 +32,11 @@ body {
 .faq-section {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 5px;
+}
+
+.header-one{
+    margin: -10px 20px;
 }
 
 .property h4 {
@@ -47,129 +51,205 @@ body {
 }
 
 /* --- Header Section --- */
+/* --- Header Section --- */
+/* --- Header Section --- */
 .main-header {
-    background-color: white;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.08);
-    padding: 0px 0px;
+    position: fixed;
+    /* Changed from absolute to fixed for sticky behavior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: transparent;
+    padding: 0px 0;
+    transition: all 0.4s ease;
+    /* Smooth transition for background and padding */
 }
 
-.header-actions a {
-    background-color: #c5042e;
-    color: rgb(240, 240, 240);
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    padding: 8px 24px;
-    border-radius: 6px;
-    text-decoration: none;
+.main-header.scrolled {
+    background-color: rgba(25, 25, 46, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 0px 0;
 }
 
-.header-actions a:hover {
-    background-color: #6e001e;
-    transition-duration: 200ms;
-    box-shadow: 0 4px 8px rgba(44, 48, 52, 0.3);
+
+.main-header.scrolled .main-nav a {
+    color: white;
 }
 
 .header-one {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo-group {
     display: flex;
     align-items: center;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .main-logo {
     height: 80px;
-    margin-right: 70px;
+    width: 150px;
+    margin-right: 0;
+    padding-top: 2px;
 }
 
+/* Hide site name if logo has text, or style it to be white if needed */
 .site-name {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: var(--secondary-color);
+    display: none;
 }
 
-.secondary-logo {
-    height: 35px;
-    margin-right: 20px;
-    opacity: 0.8;
+/* Centered Navigation */
+.main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 25rem;
 }
 
 .main-nav ul {
     list-style: none;
     display: flex;
+    gap: 30px;
 }
 
 .main-nav a {
     text-decoration: none;
-    color: var(--secondary-color);
-    font-weight: 700;
-    padding: 10px 15px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    padding: 0px 0;
     position: relative;
     transition: color 0.3s;
-    font-size: 0.98em;
+    font-size: 1rem;
 }
 
-.main-nav a {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-}
-
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 0;
-    display: block;
-    margin-top: 5px;
-    background: var(--primary-color, #B50031);
-    transition: width 0.3s ease;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-}
-
-.main-nav a.active::after {
-    width: calc(100% - 30px);
-}
-
+.main-nav a:hover,
 .main-nav a.active {
-    color: var(--primary-color, #B50031);
+    color: #fff;
+    font-weight: 600;
 }
 
-.main-nav a:hover::after {
-    width: calc(100% - 30px);
+/* Remove the underline effect or make it subtle/white if preferred */
+.main-nav a::after {
+    display: none;
 }
 
-.main-nav a:hover {
-    color: var(--primary-color, #B50031);
-}
-
+/* Header Actions (Button) */
 .header-actions {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
-.enquiry-btn {
-    background-color: var(--primary-color, #B50031);
+.header-actions a {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: white;
-    border: none;
-    padding: 15px 30px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px 20px;
     border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 8px rgba(181, 0, 49, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.enquiry-btn:hover {
-    background-color: #8C0028;
+.header-actions a:hover {
+    background: rgba(255, 255, 255, 0.25);
     transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.mobile-menu-toggle.active {
+    color: var(--secondary-color);
+}
+
+/* Mobile Menu Styling */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 80px 20px 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: block;
+}
+
+.mobile-menu .mobile-enquiry-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .main-nav {
+        display: none;
+    }
+
+    .header-actions {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        color: white;
+        /* Ensure icon is white against hero bg */
+        font-size: 1.8rem;
+        z-index: 1001;
+        /* Ensure above everything */
+    }
+
+    .main-logo {
+        height: 60px;
+    }
+
+    .header-one {
+        padding: 0 20px;
+    }
 }
 
 /* --- Hero Banner Section --- */
@@ -761,23 +841,23 @@ body {
 }
 
 button.scroll-btn.next-btn {
-  background-color: #c2c2c200;
-  color: #636363;
-  cursor: pointer;
-  border: 1px solid #929292;
-  padding: 10px 10px;
-  height: 50px;
-  border-radius: 50px 30px;
+    background-color: #c2c2c200;
+    color: #636363;
+    cursor: pointer;
+    border: 1px solid #929292;
+    padding: 10px 10px;
+    height: 50px;
+    border-radius: 50px 30px;
 }
 
 button.scroll-btn.prev-btn {
-  background-color: #c2c2c200;
-  color: #636363;
-  cursor: pointer;
-  border: 1px solid #929292;
-  padding: 10px 10px;
-  height: 50px;
-  border-radius: 50px 30px;
+    background-color: #c2c2c200;
+    color: #636363;
+    cursor: pointer;
+    border: 1px solid #929292;
+    padding: 10px 10px;
+    height: 50px;
+    border-radius: 50px 30px;
 }
 
 .sell-card .price {
@@ -2995,9 +3075,10 @@ textarea:focus {
     }
 
     .main-logo {
-        height: 50px;
+        height: 60px;
         margin-right: 5px;
     }
+
 
     .site-name,
     .secondary-logo {
@@ -5152,6 +5233,10 @@ textarea:focus {
         .blog-main-list {
             width: 100%;
         }
+
+        .new-hero-section {
+            height: 10%;
+        }
     }
 
     /* Added styles for View Details links */
@@ -5389,3 +5474,280 @@ textarea:focus {
             grid-template-columns: 1fr;
         }
     }
+
+}
+
+/* --- New Hero Section (Reference Design) --- */
+.new-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* Adjusted height */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content-wrapper {
+    width: 100%;
+    max-width: var(--max-width);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.hero-main-text {
+    max-width: 1200px;
+    margin-bottom: 100px;
+    margin-left: 30px;
+    /* More space for design */
+}
+
+.hero-main-text h1 {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 3.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.hero-main-text h1 strong {
+    color: white;
+    font-weight: 700;
+}
+
+.hero-main-text p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    opacity: 0.95;
+    line-height: 1.6;
+    max-width: 800px;
+    font-weight: 300;
+}
+
+/* Refined Glass Search Input */
+.hero-search-input {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 60px;
+    /* More rounded */
+    padding: 8px 8px 8px 30px;
+    max-width: 500px;
+    margin-top: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.hero-search-input:focus-within {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero-search-input input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    flex: 1;
+    outline: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-search-input input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-search-arrow {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* Thin border like reference */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 15px;
+}
+
+.hero-search-arrow:hover {
+    background: white;
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+
+/* --- Floating Filter Bar (Refined) --- */
+.floating-filter-bar {
+    position: absolute;
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    border-radius: 50px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.filter-item {
+    flex: 1;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.filter-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filter-separator {
+    width: 1px;
+    height: 40px;
+    background-color: #eee;
+}
+
+.filter-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #999;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-label i {
+    font-size: 0.7rem;
+    /* Chevron size */
+    color: #ccc;
+}
+
+.fas .fa-chevron-down {
+    padding: 10px;
+}
+
+.filter-value {
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    font-weight: 700;
+    /* Bold value */
+    color: #1a1a2e;
+    /* Dark text */
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-appearance: none;
+    /* Remove default arrow */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.filter-search-btn {
+    background-color: #0f1c3f;
+    /* Dark Navy/Black from image */
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 40px;
+    /* Rounded Pill button */
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 5px 15px rgba(15, 28, 63, 0.2);
+}
+
+.filter-search-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Make it responsive: stack on mobile */
+@media (max-width: 900px) {
+    .floating-filter-bar {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 0px;
+        margin-bottom: -80px;
+        width: 100%;
+        border-radius: 20px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .filter-item {
+        width: 100%;
+        padding: 0;
+    }
+
+    .filter-separator {
+        width: 100%;
+        height: 1px;
+        margin: 5px 0;
+    }
+
+    .hero-main-text h1 {
+        font-size: 2.2rem;
+        margin-top: 100px;
+        margin-left: -10px;
+    }
+
+    .hero-main-text {
+        margin-bottom: 100px;
+    }
+
+    .hero-main-text p {
+        margin-left: -10px;
+    }
+
+    .hero-search-input {
+        margin-left: -20px;
+        margin-right: 20px;
+    }
+
+    .filter-search-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}

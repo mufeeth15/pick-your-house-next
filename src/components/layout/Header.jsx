@@ -6,6 +6,7 @@ const Header = () => {
     const pathname = usePathname();
     const [activeLink, setActiveLink] = useState('/');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         setActiveLink(pathname);
@@ -13,22 +14,37 @@ const Header = () => {
         setIsMobileMenuOpen(false);
     }, [pathname]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
     return (
-        <header className="main-header">
+        <header className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="header-one">
                 <div className="logo-group">
                     <Link href="/">
-                        <img src="/PYH.webp" alt="Pick Your House Logo" className="main-logo" />
+                        <img src="/PYH-e1756471072799.webp" alt="Pick Your House Logo" className="main-logo" />
                     </Link>
                 </div>
 
                 {/* Mobile Menu Toggle Button */}
                 <button
-                    className="mobile-menu-toggle"
+                    className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
                     onClick={toggleMobileMenu}
                     aria-label="Toggle menu"
                 >

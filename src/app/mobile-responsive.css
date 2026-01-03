@@ -2,7 +2,8 @@
 /* ====== MOBILE NAVIGATION MENU ======== */
 /* ======================================= */
 
-/* Mobile Menu Toggle Button - Hidden by default */
+/* Mobile Menu Toggle Button and Menu are now handled in globals.css to match the new design */
+/* 
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -14,7 +15,6 @@
     z-index: 1001;
 }
 
-/* Mobile Menu - Hidden by default */
 .mobile-menu {
     display: none;
     position: fixed;
@@ -70,6 +70,7 @@
 .mobile-menu .mobile-enquiry-btn:hover {
     background-color: #6e001e;
 }
+*/
 
 /* ======================================= */
 /* ====== RESPONSIVE MEDIA QUERIES ====== */
@@ -78,7 +79,7 @@
 /* Tablet and Mobile - 1024px and below */
 @media (max-width: 1024px) {
 
-    /* Header adjustments */
+    /* Header adjustments handled in globals.css now
     .header-one {
         padding: 10px 20px;
     }
@@ -88,7 +89,6 @@
         margin-right: 0;
     }
 
-    /* Hide desktop nav and show mobile toggle */
     .main-nav {
         display: none;
     }
@@ -104,6 +104,8 @@
     .header-actions {
         display: none;
     }
+    */
+
 
     /* Hero Section */
     .hero-banner {

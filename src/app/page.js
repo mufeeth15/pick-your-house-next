@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SearchFilter />
+      {/* <SearchFilter /> Intentionally removed as it's now part of Hero */}
       <PropertyDiscovery />
       <ExclusiveHighlight />
       <FeaturedSell />
