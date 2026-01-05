@@ -307,8 +307,8 @@
     .container,
     .section-header,
     .header-one {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 1px;
+        padding-right: 30px;
         width: 100%;
         box-sizing: border-box;
     }
